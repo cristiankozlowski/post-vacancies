@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('title');
             $table->enum('mode', ['on-site', 'hybrid', 'remote']);
             $table->enum('type', ['full-time', 'part-time', 'contract', 'internship']);

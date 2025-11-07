@@ -11,12 +11,12 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
 
-Route::get('/vacancies/create', [VacancyController::class, 'create'])->name('vacancies.create');
-Route::post('/vacancies', [VacancyController::class, 'store'])->name('vacancies.store');
-Route::get('/vacancies/{vacancy}', [VacancyController::class, 'show'])->name('vacancies.show');
+    Route::resource('/vacancies', VacancyController::class);
+});
 
 require __DIR__.'/settings.php';
