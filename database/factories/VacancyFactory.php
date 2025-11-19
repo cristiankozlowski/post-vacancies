@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,15 +17,18 @@ class VacancyFactory extends Factory
      */
     public function definition(): array
     {
+        $programmingLanguages = ['php', 'node', 'phyton', 'java', 'c#'];
+        $mode = ['on-site', 'hybrid', 'remote'];
+        $type = ['full-time', 'part-time', 'contract', 'internship'];
 
         return [
-            // 'user_id' => User::factory(['is_hr' => true]),
-            // 'title' => 'Desenvolvedor ' . fake()->word(),
-            // 'mode' => ['on-site', 'hybrid', 'remote'],
-            // 'type' => ['full-time', 'part-time', 'contract', 'internship'],
-            // 'salary' => fake()->price(),
-            // 'location' => fake(),
-            // 'description' => fake()->paragraph(2),
+            'user_id' => User::factory()->create(['is_hr' => true]),
+            'title' => 'Desenvolvedor ' . $programmingLanguages[rand(0, 4)],
+            'mode' => $mode[rand(0, 2)],
+            'type' => $type[rand(0, 3)],
+            'salary' => rand(1800, 3250),
+            'location' => fake()->address(),
+            'description' => fake()->paragraph(rand(2, 4)),
         ];
     }
 }

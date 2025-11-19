@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col items-center">
-        <div v-for="(vacancy, index) in vacancies" :key="index" class="w-1/3 my-4 p-4 border border-gray-300 rounded-md">
+        <div v-for="(vacancy, index) in vacancies" :key="index" class="w-1/2 my-4 p-4 border border-gray-300 rounded-md">
             <h1 class="text-gray-800 text-2xl font-bold">{{ vacancy.title }}</h1>
             <div class="flex items-center">
                 <span class="material-icons-two-tone">location_on</span><span class=" text-gray-600 mr-4">{{ vacancy.location }}</span>
