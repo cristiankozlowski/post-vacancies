@@ -5,9 +5,6 @@ import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescri
 
 export default defineConfigWithVueTs(
     vue.configs['flat/essential'],
-    vue.rules({
-        'vue/script-setup-uses-vars': 'off'
-    }),
     vueTsConfigs.recommended,
     {
         ignores: ['vendor', 'node_modules', 'public', 'bootstrap/ssr', 'tailwind.config.js', 'resources/js/components/ui/*'],
@@ -16,6 +13,12 @@ export default defineConfigWithVueTs(
         rules: {
             'vue/multi-word-component-names': 'off',
             '@typescript-eslint/no-explicit-any': 'off',
+            'vue/block-lang': ['error', {
+                script: {
+                    lang: ['js', 'ts'],
+                    allowNoLang: true
+                },
+            }]
         },
     },
     prettier,
