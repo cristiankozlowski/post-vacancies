@@ -1,9 +1,20 @@
 <script setup>
-import ListVacancies from '../shared/ListVacancies.vue'
+import AppLayout from '@/layouts/AppLayout.vue';
+import ListVacancies from '../../shared/ListVacancies.vue'
+// import { type BreadcrumbItem } from '@/types';
 
-defineProps({ vacancies: Array })
+defineProps({vacancies: Array});
+
+const breadcrumbItems = [
+    {
+        title: 'List vacancies',
+        // href: edit().url,
+    },
+];
 </script>
 
 <template>
-    <ListVacancies :vacancies="vacancies.data" />
+    <AppLayout :breadcrumbs="breadcrumbItems">
+        <ListVacancies :vacancies="vacancies.data" />
+    </AppLayout>
 </template>
